@@ -271,7 +271,7 @@ const Projects = () => {
         view the archive
       </Link>
 
-      <ul className="projects-grid">
+      //<ul className="projects-grid">
         {prefersReducedMotion ? (
           <>
             {projectsToShow &&
