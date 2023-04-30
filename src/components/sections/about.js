@@ -127,7 +127,33 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
+  const skills = [
+    'Python',
+    'SQL',
+    'Power BI',
+    'Salesforce',
+    'Tableau',
+    'Wireshark',
+    'Nmap',
+    'Metasploit',
+    'Kali Linux',
+    'Splunk',
+    'Trello',
+    'Asana',
+    'Jira',
+    'Pandas',
+    'NumPy',
+    'Jupyter Notebooks',
+    'Selenium',
+    'Matplotlib',
+    'Seaborn',
+    'VMware vSphere',
+    'Microsoft Hyper-V',
+    'Active Directory',
+    'DNS',
+    'DHCP',
+  ];
+
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -137,9 +163,18 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Omid Gholizadeh, and I am a dedicated and resourceful IT professional with a strong academic background in Business Administration and Management Information Systems. With years of hands-on experience in the hospitality industry, I have honed my skills in IT support, project management, and technology-driven process improvement.
-              My passion for technology extends beyond the workplace, as I have taken on leadership roles in various university clubs and programs, including the Department of Energy Cybersecurity Workforce Development Program, the San Diego State University Artificial Intelligence Club, and the BuildIT Center's 3D Printing Lab. These experiences have allowed me to develop my skills in teamwork, mentorship, and project management.
+              Hello! My name is Omid Gholizadeh, and I am a dedicated and resourceful IT professional with a strong academic background in Business Administration and Management Information Systems.
+            </p>
+
+            <p>
+              With years of hands-on experience in the hospitality industry, I have honed my skills in IT support, project management, and technology-driven process improvement. My passion for technology extends beyond the workplace, as I have taken on leadership roles in various university clubs and programs, including the Department of Energy Cybersecurity Workforce Development Program, the San Diego State University Artificial Intelligence Club, and the BuildIT Center's 3D Printing Lab. These experiences have allowed me to develop my skills in teamwork, mentorship, and project management.
+            </p>
+
+            <p>
               When I'm not working or leading teams, I enjoy taking on personal projects that further expand my technical skills and knowledge. One such example is my Gym Usage Analysis and Visualization project, where I employed Python, Selenium, and data visualization libraries to analyze and present insights into gym usage patterns.
+            </p>
+
+            <p>
               I believe that technology has the power to revolutionize the way we live, work, and interact. Through my website, I aim to share my knowledge, experiences, and passion for technology with others. I hope you find the content engaging and informative, and I invite you to connect with me on social media or through the contact form if you have any questions, suggestions, or opportunities for collaboration.
             </p>
 
@@ -169,4 +204,5 @@ const About = () => {
 };
 
 export default About;
+
 
