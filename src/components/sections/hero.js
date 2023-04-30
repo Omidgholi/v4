@@ -66,9 +66,7 @@ const Hero = () => {
     <>
       <p>
         I'm an IT professional with expertise in Business Administration and Management Information Systems.
-        My focus is on developing accessible, user-centered technology solutions, drawing from my experience in hospitality, cybersecurity, and artificial intelligence.{' '}
-        <a href="https://www.lagunahospitalitygroup.com/" target="_blank" rel="noreferrer">
-          Laguna Hospitality Group
+        My focus is on developing accessible, user-centered technology solutions, drawing from my experience in hospitality, cybersecurity, and artificial intelligence.
         </a>
         .
       </p>
@@ -76,7 +74,7 @@ const Hero = () => {
   );
   const five = (
     <a
-      className="resume-button"
+      className="email-link"
       href="/resume.pdf"
       target="_blank"
       rel="noopener noreferrer">
