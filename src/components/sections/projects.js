@@ -211,91 +211,102 @@ const Projects = () => {
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
 
-const projectInner = node => {
-  const { frontmatter, html } = node;
-  const { github, external, title, tech } = frontmatter;
+  const projectInner = node => {
+    const { frontmatter, html } = node;
+    const { github, external, title, tech } = frontmatter;
+
+    return (
+      <div className="project-inner">
+        <header>
+          <div className="project-top">
+            <div className="folder">
+              <Icon name="Folder" />
+            </div>
+            <div className="project-links">
+              {github && (
+                <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
+                  <Icon name="GitHub" />
+                </a>
+              )}
+              {external && (
+                <a
+                  href={external}
+                  aria-label="External Link"
+                  className="external"
+                  target="_blank"
+                  rel="noreferrer">
+                  <Icon name="External" />
+                </a>
+              )}
+            </div>
+          </div>
+
+          <h3 className="project-title">
+            <a href={external} target="_blank" rel="noreferrer">
+              {title}
+            </a>
+          </h3>
+
+          <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
+        </header>
+
+        <footer>
+          {tech && (
+            <ul className="project-tech-list">
+              {tech.map((tech, i) => (
+                <li key={i}>{tech}</li>
+              ))}
+            </ul>
+          )}
+        </footer>
+      </div>
+    );
+  };
 
   return (
-    <div className="project-inner">
-      <header>
-        <div className="project-top">
-          <div className="folder">
-            <Icon name="Folder" />
-          </div>
-          <div className="project-links">
-            {github && (
-              <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
-                <Icon name="GitHub" />
-              </a>
-            )}
-            {external && (
-              <a
-                href={external}
-                aria-label="External Link"
-                className="external"
-                target="_blank"
-                rel="noreferrer">
-                <Icon name="External" />
-              </a>
-            )}
-          </div>
-        </div>
+    <StyledProjectsSection>
+      //<h2 ref={revealTitle}>Other Noteworthy Projects</h2>
 
-        <h3 className="project-title">
-          <a href={external} target="_blank" rel="noreferrer">
-            {title}
-          </a>
-        </h3>
+      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
+        view the archive
+      </Link>
 
-        <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
-      </header>
-
-      <footer>
-        {tech && (
-          <ul className="project-tech-list">
-            {tech.map((tech, i) => (
-              <li key={i}>{tech}</li>
-            ))}
-          </ul>
+      <ul className="projects-grid">
+        {prefersReducedMotion ? (
+          <>
+            {projectsToShow &&
+              projectsToShow.map(({ node }, i) => (
+                <StyledProject key={i}>{projectInner(node)}</StyledProject>
+              ))}
+          </>
+        ) : (
+          <TransitionGroup component={null}>
+            {projectsToShow &&
+              projectsToShow.map(({ node }, i) => (
+                <CSSTransition
+                  key={i}
+                  classNames="fadeup"
+                  timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
+                  exit={false}>
+                  <StyledProject
+                    key={i}
+                    ref={el => (revealProjects.current[i] = el)}
+                    style={{
+                      transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
+                    }}>
+                    {projectInner(node)}
+                  </StyledProject>
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
         )}
-      </footer>
-    </div>
+      </ul>
+
+      //<button className="more-button" onClick={() => setShowMore(!showMore)}>
+        Show {showMore ? 'Less' : 'More'}
+      </button>
+    </StyledProjectsSection>
   );
 };
-
-return (
-  <StyledProjectsSection>
-    <ul className="projects-grid">
-      {prefersReducedMotion ? (
-        <>
-          {projectsToShow &&
-            projectsToShow.map(({ node }, i) => (
-              <StyledProject key={i}>{projectInner(node)}</StyledProject>
-            ))}
-        </>
-      ) : (
-        <TransitionGroup component={null}>
-          {projectsToShow &&
-            projectsToShow.map(({ node }, i) => (
-              <CSSTransition
-                key={i}
-                classNames="fadeup"
-                timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                exit={false}>
-                <StyledProject
-                  key={i}
-                  ref={el => (revealProjects.current[i] = el)}
-                  style={{
-                    transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                  }}>
-                  {projectInner(node)}
-                </StyledProject>
-              </CSSTransition>
-            ))}
-        </TransitionGroup>
-      )}
-    </ul>
-  </StyledProjectsSection>
-);
 
 export default Projects;
