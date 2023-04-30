@@ -34,31 +34,18 @@ const StyledLoader = styled.div`
 `;
 
 const TechPlanetLoader = () => (
-  <svg
-    className="tech-planet-loader"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="40" stroke="var(--white)" strokeWidth="2" fill="none" />
-    <circle
-      className="planet"
-      cx="50"
-      cy="10"
-      r="4"
-      stroke="var(--white)"
-      strokeWidth="1"
-      fill="var(--white)"
-    />
-    <circle
-      className="planet"
-      cx="50"
-      cy="90"
-      r="4"
-      stroke="var(--white)"
-      strokeWidth="1"
-      fill="var(--white)"
-    />
-  </svg>
-);
+<svg className="tech-loader" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="45" stroke="white" strokeWidth="2" strokeLinecap="round" strokeDasharray="283" strokeDashoffset="283">
+    <animate attributeName="stroke-dashoffset" from="283" to="0" dur="2s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="50" cy="50" r="35" stroke="white" strokeWidth="2" strokeLinecap="round" strokeDasharray="220" strokeDashoffset="220">
+    <animate attributeName="stroke-dashoffset" from="220" to="0" dur="2s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="50" cy="50" r="25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeDasharray="157" strokeDashoffset="157">
+    <animate attributeName="stroke-dashoffset" from="157" to="0" dur="2s" repeatCount="indefinite" />
+  </circle>
+</svg>
+
 
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
