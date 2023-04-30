@@ -1,15 +1,16 @@
 ---
 date: '2017-12-27'
-title: 'Halcyon Theme'
-github: 'https://github.com/bchiang7/halcyon-site'
-external: 'https://halcyon-theme.netlify.com/'
+title: 'Gym Analysis'
+github: 'https://github.com/Omidgholi/Gym_Analysis'
+external: 'https://omidgholi.pythonanywhere.com/'
 tech:
-  - VS Code
-  - Sublime Text
-  - Atom
-  - iTerm2
-  - Hyper
+  - Python
+  - Amazon Web Services (AWS)
+  - Selenium
+  - Pandas
+  - Matplotlib
+  - Flask
 showInProjects: false
 ---
 
-A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=brittanychiang.halcyon-vscode), [Package Control](https://packagecontrol.io/packages/Halcyon%20Theme), [Atom Package Manager](https://atom.io/themes/halcyon-syntax), and [npm](https://www.npmjs.com/package/hyper-halcyon-theme).
+A Python-based project that utilizes web scraping and data visualization techniques to analyze and present gym usage patterns and class schedules in a comprehensible and user-friendly format. Avaliable at [Python Anywhere](https://omidgholi.pythonanywhere.com/).
