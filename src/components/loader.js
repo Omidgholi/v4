@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
 import styled from 'styled-components';
-import { IconLoader } from '@components/icons';
 
 const StyledLoader = styled.div`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -26,17 +25,6 @@ const StyledLoader = styled.div`
     max-width: 100px;
     transition: var(--transition);
     opacity: ${props => (props.isMounted ? 1 : 0)};
-    svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-      margin: 0 auto;
-      fill: none;
-      user-select: none;
-      #B {
-        opacity: 0;
-      }
-    }
   }
   .name {
     color: var(--white);
@@ -44,6 +32,33 @@ const StyledLoader = styled.div`
     margin-top: 1rem;
   }
 `;
+
+const TechPlanetLoader = () => (
+  <svg
+    className="tech-planet-loader"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="40" stroke="var(--white)" strokeWidth="2" fill="none" />
+    <circle
+      className="planet"
+      cx="50"
+      cy="10"
+      r="4"
+      stroke="var(--white)"
+      strokeWidth="1"
+      fill="var(--white)"
+    />
+    <circle
+      className="planet"
+      cx="50"
+      cy="90"
+      r="4"
+      stroke="var(--white)"
+      strokeWidth="1"
+      fill="var(--white)"
+    />
+  </svg>
+);
 
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -55,20 +70,17 @@ const Loader = ({ finishLoading }) => {
 
     loader
       .add({
-        targets: '#logo path',
+        targets: '.tech-planet-loader .planet',
+        rotate: {
+          value: '1turn',
+          duration: 2000,
+          easing: 'linear',
+          loop: true,
+        },
         delay: 300,
-        duration: 1500,
-        easing: 'easeInOutQuart',
-        strokeDashoffset: [anime.setDashoffset, 0],
       })
       .add({
-        targets: '#logo #Omid',
-        duration: 700,
-        easing: 'easeInOutQuart',
-        opacity: 1,
-      })
-      .add({
-        targets: '#logo',
+        targets: '.tech-planet-loader',
         delay: 500,
         duration: 300,
         easing: 'easeInOutQuart',
@@ -95,7 +107,7 @@ const Loader = ({ finishLoading }) => {
       <Helmet bodyAttributes={{ class: `hidden` }} />
 
       <div className="logo-wrapper">
-        <IconLoader />
+        <TechPlanetLoader />
         <div className="name">Omid Gholizadeh</div>
       </div>
     </StyledLoader>
