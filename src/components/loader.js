@@ -18,6 +18,10 @@ const StyledLoader = styled.div`
   z-index: 99;
 
   .logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: max-content;
     max-width: 100px;
     transition: var(--transition);
@@ -33,6 +37,11 @@ const StyledLoader = styled.div`
         opacity: 0;
       }
     }
+  }
+  .name {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -87,6 +96,7 @@ const Loader = ({ finishLoading }) => {
 
       <div className="logo-wrapper">
         <IconLoader />
+        <div className="name">Omid Gholizadeh</div>
       </div>
     </StyledLoader>
   );
