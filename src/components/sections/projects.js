@@ -215,9 +215,6 @@ const Projects = () => {
     const { frontmatter, html } = node;
     const { github, external, title, tech } = frontmatter;
 
-    return (
-
-  );
 };
 
 export default Projects;
