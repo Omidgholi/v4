@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
 import styled from 'styled-components';
+import { IconLoader } from '@components/icons';
 
 const StyledLoader = styled.div`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -17,35 +18,23 @@ const StyledLoader = styled.div`
   z-index: 99;
 
   .logo-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: max-content;
     max-width: 100px;
     transition: var(--transition);
     opacity: ${props => (props.isMounted ? 1 : 0)};
-  }
-  .name {
-    color: var(--white);
-    font-size: 1.5rem;
-    margin-top: 1rem;
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      fill: none;
+      user-select: none;
+      #B {
+        opacity: 0;
+      }
+    }
   }
 `;
-
-const TechPlanetLoader = () => (
-<svg className="tech-loader" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="45" stroke="white" strokeWidth="2" strokeLinecap="round" strokeDasharray="283" strokeDashoffset="283">
-    <animate attributeName="stroke-dashoffset" from="283" to="0" dur="2s" repeatCount="indefinite" />
-  </circle>
-  <circle cx="50" cy="50" r="35" stroke="white" strokeWidth="2" strokeLinecap="round" strokeDasharray="220" strokeDashoffset="220">
-    <animate attributeName="stroke-dashoffset" from="220" to="0" dur="2s" repeatCount="indefinite" />
-  </circle>
-  <circle cx="50" cy="50" r="25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeDasharray="157" strokeDashoffset="157">
-    <animate attributeName="stroke-dashoffset" from="157" to="0" dur="2s" repeatCount="indefinite" />
-  </circle>
-</svg>
-
 
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -57,17 +46,20 @@ const Loader = ({ finishLoading }) => {
 
     loader
       .add({
-        targets: '.tech-planet-loader .planet',
-        rotate: {
-          value: '1turn',
-          duration: 2000,
-          easing: 'linear',
-          loop: true,
-        },
+        targets: '#logo path',
         delay: 300,
+        duration: 1500,
+        easing: 'easeInOutQuart',
+        strokeDashoffset: [anime.setDashoffset, 0],
       })
       .add({
-        targets: '.tech-planet-loader',
+        targets: '#logo #O',
+        duration: 700,
+        easing: 'easeInOutQuart',
+        opacity: 1,
+      })
+      .add({
+        targets: '#logo',
         delay: 500,
         duration: 300,
         easing: 'easeInOutQuart',
@@ -94,8 +86,7 @@ const Loader = ({ finishLoading }) => {
       <Helmet bodyAttributes={{ class: `hidden` }} />
 
       <div className="logo-wrapper">
-        <TechPlanetLoader />
-        <div className="name">Omid Gholizadeh</div>
+        <IconLoader />
       </div>
     </StyledLoader>
   );
